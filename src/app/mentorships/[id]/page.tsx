@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 
 import Navbar from "@/app/components/sections/navbar/default";
 import FooterSection from "@/app/components/sections/footer/default";
@@ -14,9 +14,10 @@ import MentorRelated from "@/app/components/sections/mentorship/mentor-related";
 import MentorActionBar from "@/app/components/sections/mentorship/mentor-action-bar";
 import MentorTrustSafety from "@/app/components/sections/mentorship/mentor-trust-safety";
 
-export default function MentorshipDetailPage({ params }: { params: { id: string } }) {
+export default function MentorshipDetailPage({ params }: { params: Promise<{ id: string }> }) {
   // Remove the use(params) call
   // const unwrappedParams = use(params);
+  const { id } = use(params);
   
   const [mentor, setMentor] = useState<{
     id: string;
@@ -49,9 +50,9 @@ export default function MentorshipDetailPage({ params }: { params: { id: string 
   useEffect(() => {
     // This would normally be an API call to fetch mentor data
     // For now, we'll mock the data
-    if (params.id) { // Use params.id directly instead of unwrappedParams.id
+    if (id) { // Use params.id directly instead of unwrappedParams.id
       setMentor({
-        id: params.id, // Use params.id directly
+        id: id, // Use params.id directly
         name: "Dr. Rajesh Kumar",
         role: "Senior Data Scientist",
         company: "Google",
@@ -121,7 +122,7 @@ export default function MentorshipDetailPage({ params }: { params: { id: string 
         ]
       });
     }
-  }, [params.id]); // Update dependency array to use params.id
+  }, [id]); // Update dependency array to use params.id
 
   if (!mentor) {
     return (

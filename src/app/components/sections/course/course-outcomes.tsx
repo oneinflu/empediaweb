@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Section } from "@/app/components/ui/section";
 import { Badge } from "@/app/components/ui/badge";
 import { CategoryCardProps } from "@/app/data/category-data";
 import { Award, Briefcase, ChevronRight, DollarSign, TrendingUp, Users, Zap } from "lucide-react";
+import Image from "next/image";
 
 type CourseOutcomesProps = {
   course: CategoryCardProps & {
@@ -224,9 +224,11 @@ export default function CourseOutcomes({ course }: CourseOutcomesProps) {
               <div key={index} className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-blue-100">
-                    <img 
+                    <Image 
                       src={story.avatar} 
                       alt={story.name} 
+                      width={48}
+                      height={48}
                       className="h-full w-full object-cover" 
                     />
                   </div>

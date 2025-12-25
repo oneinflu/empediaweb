@@ -54,6 +54,8 @@ export default function CompanySection({ internship }: CompanySectionProps) {
                   <Image
                     src={companyData.logo}
                     alt={`${companyData.name} logo`}
+                    width={80}
+                    height={80}
                     className="h-20 w-20 object-contain"
                   />
                 )}

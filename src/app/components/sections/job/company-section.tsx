@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Section } from "@/app/components/ui/section";
 import { Button } from "@/app/components/ui/button";
 import { CategoryCardProps, jobsData } from "@/app/data/category-data";
 import Link from "next/link";
+import Image from "next/image";
 import { Building, ExternalLink, ArrowRight, Star, Award, Users } from "lucide-react";
 
 type JobCompanySectionProps = {
@@ -75,9 +75,11 @@ export default function JobCompanySection({ job }: JobCompanySectionProps) {
             <div className="flex-shrink-0">
               <div className="h-24 w-24 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden border border-gray-200">
                 {companyData.logo && (
-                  <img
+                  <Image
                     src={companyData.logo}
                     alt={`${companyData.name} logo`}
+                    width={80}
+                    height={80}
                     className="h-20 w-20 object-contain"
                   />
                 )}
@@ -228,9 +230,11 @@ export default function JobCompanySection({ job }: JobCompanySectionProps) {
                       {/* Logo */}
                       <div className="h-10 w-10 rounded-md bg-gray-100 flex items-center justify-center overflow-hidden border border-gray-200">
                         {job.logo && (
-                          <img
+                          <Image
                             src={job.logo}
                             alt={`${job.company} logo`}
+                            width={32}
+                            height={32}
                             className="h-8 w-8 object-contain"
                           />
                         )}

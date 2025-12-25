@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Section } from "@/app/components/ui/section";
 import { Badge } from "@/app/components/ui/badge";
 import { CategoryCardProps } from "@/app/data/category-data";
 import Link from "next/link";
+import Image from "next/image";
 
 
 type JobOverviewProps = {
@@ -116,9 +116,11 @@ export default function JobOverview({ job }: JobOverviewProps) {
             {mockData.techStack.map((tech, index) => (
               <div key={index} className="flex flex-col items-center">
                 <div className="h-16 w-16 rounded-lg bg-gray-50 border border-gray-200 flex items-center justify-center overflow-hidden mb-2">
-                  <img 
+                  <Image 
                     src={tech.logo} 
                     alt={`${tech.name} logo`} 
+                    width={40}
+                    height={40}
                     className="h-10 w-10 object-contain" 
                   />
                 </div>

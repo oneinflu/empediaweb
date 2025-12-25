@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import { Section } from "../../ui/section";
 import { Button } from "../../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -94,10 +94,11 @@ const TrendingCard = ({ item }: { item: TrendingCardProps }) => {
   return (
     <div className="bg-white rounded-xl overflow-hidden shadow-md h-full flex flex-col">
       <div className="relative h-40 md:h-48 overflow-hidden">
-        <img 
+        <Image 
           src={item.imageSrc} 
           alt={item.title} 
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
         />
         {item.badgeText && (
           <div className="absolute top-3 right-3 bg-blue-600 text-white text-xs px-2 py-1 rounded">
@@ -118,7 +119,7 @@ const TrendingCard = ({ item }: { item: TrendingCardProps }) => {
           <div className="flex items-center gap-2 mt-auto mb-3">
             {item.logoSrc.map((logo, idx) => (
               <div key={idx} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
-                <img src={logo} alt="Partner logo" className="w-6 h-6 object-contain" />
+                <Image src={logo} alt="Partner logo" width={24} height={24} className="w-6 h-6 object-contain" />
               </div>
             ))}
           </div>

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Button } from "@/app/components/ui/button";
@@ -7,6 +6,7 @@ import { MapPin, Briefcase, DollarSign,  ExternalLink, Building } from "lucide-r
 import { useState, useEffect } from "react";
 import { CategoryCardProps } from "@/app/data/category-data";
 import Link from "next/link";
+import Image from "next/image";
 
 type JobHeroProps = {
   job: CategoryCardProps & {
@@ -41,9 +41,11 @@ export default function JobHero({ job }: JobHeroProps) {
               {/* Company logo */}
               <div className="h-16 w-16 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden border border-gray-200">
                 {job.logo && (
-                  <img 
+                  <Image 
                     src={job.logo} 
                     alt={`${job.company} logo`} 
+                    width={48}
+                    height={48}
                     className="h-12 w-12 object-contain" 
                   />
                 )}

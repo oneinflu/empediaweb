@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Button } from "@/app/components/ui/button";
@@ -6,6 +5,7 @@ import { Section } from "@/app/components/ui/section";
 import { MapPin, Calendar, DollarSign, Clock, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
 import { CategoryCardProps } from "@/app/data/category-data";
+import Image from "next/image";
 
 type InternshipHeroProps = {
   internship: CategoryCardProps & {
@@ -55,9 +55,11 @@ export default function InternshipHero({ internship }: InternshipHeroProps) {
               {/* Company logo */}
               <div className="h-16 w-16 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden border border-gray-200">
                 {internship.logo && (
-                  <img 
+                  <Image 
                     src={internship.logo} 
                     alt={`${internship.company} logo`} 
+                    width={48}
+                    height={48}
                     className="h-12 w-12 object-contain" 
                   />
                 )}

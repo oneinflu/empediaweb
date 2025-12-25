@@ -112,6 +112,8 @@ export default function CourseAudience({ course }: CourseAudienceProps) {
               <Image 
                 src="https://randomuser.me/api/portraits/men/32.jpg" 
                 alt="Student" 
+                width={48}
+                height={48}
                 className="h-full w-full object-cover" 
               />
             </div>

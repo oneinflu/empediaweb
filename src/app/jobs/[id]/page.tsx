@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 
 import Navbar from "@/app/components/sections/navbar/default";
 import FooterSection from "@/app/components/sections/footer/default";
@@ -14,9 +14,9 @@ import JobSocialProof from "@/app/components/sections/job/social-proof";
 import JobActionBar from "@/app/components/sections/job/action-bar";
 import { CategoryCardProps, jobsData } from "@/app/data/category-data";
 
-export default function JobDetailPage({ params }: { params: { id: string } }) {
+export default function JobDetailPage({ params }: { params: Promise<{ id: string }> }) {
   // Remove the use hook and use params directly
-  // const unwrappedParams = use(params);
+  const { id } = use(params);
   
   const [job, setJob] = useState<CategoryCardProps & {
     experienceLevel?: string;
@@ -29,7 +29,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
   useEffect(() => {
     // In a real app, you would fetch this data from an API
     // For now, we'll simulate by finding the job in our static data
-    const decodedId = decodeURIComponent(params.id);
+    const decodedId = decodeURIComponent(id);
     
     // Find the job with the matching title
     const foundJob = jobsData.cards.find(card => card.title === decodedId);
@@ -45,7 +45,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
         description: foundJob.description || "Join our team and work on exciting projects that impact millions of users. You'll collaborate with experienced professionals, participate in code reviews, and gain valuable industry experience."
       });
     }
-  }, [params.id]);
+  }, [id]);
 
   if (!job) {
     return (

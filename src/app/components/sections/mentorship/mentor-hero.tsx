@@ -1,11 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Button } from "@/app/components/ui/button";
 import { Section } from "@/app/components/ui/section";
 import { Star, Briefcase, Clock, Award } from "lucide-react";
 import { useState, useEffect } from "react";
-
+import Image from "next/image";
 
 type MentorHeroProps = {
   mentor: {
@@ -47,11 +46,12 @@ export default function MentorHero({ mentor }: MentorHeroProps) {
           <div className="flex-1">
             <div className="flex flex-col md:flex-row gap-6 items-start md:items-center mb-6">
               {/* Mentor avatar */}
-              <div className="h-32 w-32 rounded-full overflow-hidden border-4 border-blue-100">
-                <img 
+              <div className="h-32 w-32 rounded-full overflow-hidden border-4 border-blue-100 relative">
+                <Image 
                   src={mentor.avatar} 
                   alt={mentor.name} 
-                  className="h-full w-full object-cover" 
+                  fill
+                  className="object-cover" 
                 />
               </div>
               

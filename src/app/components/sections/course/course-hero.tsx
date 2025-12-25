@@ -60,6 +60,8 @@ export default function CourseHero({ course }: CourseHeroProps) {
                   <Image 
                     src={course.logo} 
                     alt={`${course.company} logo`} 
+                    width={48}
+                    height={48}
                     className="h-12 w-12 object-contain" 
                   />
                 )}

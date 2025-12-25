@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
@@ -13,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/app/components/ui/carousel";
+import Image from "next/image";
 
 interface MentorRelatedProps {
   mentorDomain?: string;
@@ -204,7 +204,7 @@ export default function MentorRelated({ mentorDomain = "AI & Machine Learning" }
                   <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:translate-y-[-5px] h-full">
                     <div className="flex items-center gap-4">
                       <div className="h-16 w-16 rounded-full overflow-hidden border-2 border-blue-100">
-                        <img src={mentor.avatar} alt={mentor.name} className="h-full w-full object-cover" />
+                        <Image src={mentor.avatar} alt={mentor.name} width={64} height={64} className="h-full w-full object-cover" />
                       </div>
                       
                       <div className="flex-1">

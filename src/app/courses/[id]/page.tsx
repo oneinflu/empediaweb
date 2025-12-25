@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import Navbar from "@/app/components/sections/navbar/default";
 import FooterSection from "@/app/components/sections/footer/default";
 import CourseHero from "@/app/components/sections/course/course-hero";
@@ -30,7 +30,8 @@ type Module = {
   isCompleted?: boolean;
 };
 
-export default function CourseDetailPage({ params }: { params: { id: string } }) {
+export default function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const [course, setCourse] = useState<CategoryCardProps & {
     level?: string;
     duration?: string;
@@ -58,7 +59,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
   useEffect(() => {
     // This would normally be an API call to fetch course data
     // For now, we'll mock the data
-    if (params.id) {
+    if (id) {
       setCourse({
         title: "Python for Data Science – Beginner to Advanced",
         company: "Udemy",
@@ -103,7 +104,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
         // Modules will be provided by the CourseCurriculum component with mock data
       });
     }
-  }, [params.id]);
+  }, [id]);
 
   if (!course) {
     return (

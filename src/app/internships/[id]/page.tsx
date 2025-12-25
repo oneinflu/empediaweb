@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import Navbar from "@/app/components/sections/navbar/default";
 import FooterSection from "@/app/components/sections/footer/default";
 import InternshipHero from "@/app/components/sections/internship/internship-hero";
@@ -13,7 +13,8 @@ import SocialProof from "@/app/components/sections/internship/social-proof";
 import ActionBar from "@/app/components/sections/internship/action-bar";
 import { internshipsData, CategoryCardProps } from "@/app/data/category-data";
 
-export default function InternshipDetailPage({ params }: { params: { id: string } }) {
+export default function InternshipDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const [internship, setInternship] = useState<CategoryCardProps & {
     duration?: string;
     deadline?: string;
@@ -26,7 +27,7 @@ export default function InternshipDetailPage({ params }: { params: { id: string 
   useEffect(() => {
     // In a real app, you would fetch this data from an API
     // For now, we'll simulate by finding the internship in our static data
-    const decodedId = decodeURIComponent(params.id);
+    const decodedId = decodeURIComponent(id);
     
     // Find the internship with the matching title
     const foundInternship = internshipsData.cards.find(card => card.title === decodedId);
@@ -55,7 +56,7 @@ export default function InternshipDetailPage({ params }: { params: { id: string 
         ]
       });
     }
-  }, [params.id]);
+  }, [id]);
 
   if (!internship) {
     return (

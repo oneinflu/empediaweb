@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Section } from "@/app/components/ui/section";
@@ -7,6 +6,7 @@ import { Badge } from "@/app/components/ui/badge";
 import { CategoryCardProps } from "@/app/data/category-data";
 import Link from "next/link";
 import { BookOpen, Users, TrendingUp, ArrowRight, Award, Zap, CheckCircle, Briefcase } from "lucide-react";
+import Image from "next/image";
 
 type JobGrowthLinkProps = {
   job: CategoryCardProps & {
@@ -154,7 +154,7 @@ export default function JobGrowthLink({ job }: JobGrowthLinkProps) {
                         {course.level}
                       </Badge>
                       <div className="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
-                        <img src={course.logo} alt={course.company} className="h-6 w-6 object-contain" />
+                        <Image src={course.logo} alt={course.company} width={24} height={24} className="h-6 w-6 object-contain" />
                       </div>
                     </div>
                     
@@ -199,7 +199,7 @@ export default function JobGrowthLink({ job }: JobGrowthLinkProps) {
               <Link href={mentor.link} key={index} className="block">
                 <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:translate-y-[-5px] flex items-center gap-4">
                   <div className="h-16 w-16 rounded-full overflow-hidden border-2 border-blue-100">
-                    <img src={mentor.avatar} alt={mentor.name} className="h-full w-full object-cover" />
+                    <Image src={mentor.avatar} alt={mentor.name} width={64} height={64} className="h-full w-full object-cover" />
                   </div>
                   
                   <div className="flex-1">
@@ -243,7 +243,7 @@ export default function JobGrowthLink({ job }: JobGrowthLinkProps) {
                 <Link href={internship.link} key={index} className="block">
                   <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:translate-y-[-5px] flex items-center gap-4">
                     <div className="h-12 w-12 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden border border-gray-200">
-                      <img src={internship.logo} alt={internship.company} className="h-8 w-8 object-contain" />
+                      <Image src={internship.logo} alt={internship.company} width={32} height={32} className="h-8 w-8 object-contain" />
                     </div>
                     
                     <div className="flex-1">
